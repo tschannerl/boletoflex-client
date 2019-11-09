@@ -8,57 +8,49 @@
 <div class="main">
     <div class="register-main">
         <form [formGroup]="registerForm">
-            <div class="register-content1">
+            <div class="register-content">
                 <div class="img-client">
 
                 </div>
 
-                <div class="content1">
+                <div class="content">
                     <mat-form-field style="width: 500px; margin-left: 10px">
-                        <input matInput formControlName="name" placeholder="Nome Completo">
+                        <input matInput formControlName="name" required placeholder="Nome Completo">
                     </mat-form-field>
                     <p>
                         <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="identify" placeholder="Numero de Identidade">
+                            <input matInput formControlName="identify" required placeholder="Numero de Identidade">
                         </mat-form-field>
-                        <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="orgIdentify" placeholder="Órgão Emissor/UF">
+                        <mat-form-field style="width: 100px; margin-left: 10px">
+                            <input matInput formControlName="orgIdentify" required placeholder="Órgão Emissor/UF">
                         </mat-form-field>  
                         <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="document" placeholder="CPF">
+                            <input matInput formControlName="document" required placeholder="CPF">
                         </mat-form-field>                                              
-                    </p>
-                    <p>
                         <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="nationality" placeholder="Nacionalidade">
+                            <input matInput formControlName="nationality" required placeholder="Nacionalidade">
                         </mat-form-field>      
                         <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="naturalness" placeholder="Naturalidade">
+                            <input matInput formControlName="naturalness" required placeholder="Naturalidade">
                         </mat-form-field>
                     </p>
 
                     <p>
                         <mat-form-field style="width: 400px; margin-left: 10px">
-                            <input matInput formControlName="email" placeholder="Email">
+                            <input matInput formControlName="email" required placeholder="Email">
                         </mat-form-field>  
-                    </p>
-                                                                                                       
-                </div>
-            </div>
-            <div class="register-content2">
-                <div class="content2">
-                    <p>
+
                         <mat-form-field style="width: 150px; margin-left: 10px">
-                            <input matInput formControlName="cep" placeholder="CEP">
+                            <input matInput formControlName="cep" required placeholder="CEP">
                         </mat-form-field>                        
                         <mat-form-field style="width: 400px; margin-left: 10px">
-                            <input matInput formControlName="address" placeholder="Endereço">
+                            <input matInput formControlName="address" required placeholder="Endereço">
                         </mat-form-field>  
                         <mat-form-field style="width: 80px; margin-left: 10px">
-                            <input matInput formControlName="addressNumber" placeholder="Numero">
+                            <input matInput formControlName="addressNumber" required placeholder="Numero">
                         </mat-form-field>                          
                         <mat-form-field style="width: 300px; margin-left: 10px">
-                            <input matInput formControlName="city" placeholder="Cidade">
+                            <input matInput formControlName="city" required placeholder="Cidade">
                         </mat-form-field>  
                         <mat-form-field style="width: 200px; margin-left: 10px">
                             <mat-label>Estado</mat-label>
@@ -94,7 +86,7 @@
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="birth" placeholder="Data de Nascimento">
+                            <input matInput formControlName="birth" required placeholder="Data de Nascimento">
                         </mat-form-field>  
 
                         <mat-form-field style="width: 100px; margin-left: 10px">
@@ -104,9 +96,10 @@
                                 <mat-option value="feminino">Feminino</mat-option>
                             </mat-select>
                         </mat-form-field>
-               
+                    </p>
+                    <p>
                         <mat-form-field style="width: 200px; margin-left: 10px">
-                            <input matInput formControlName="celNumber" placeholder="Celular">
+                            <input matInput formControlName="celNumber" required placeholder="Celular">
                         </mat-form-field>
                         <mat-form-field style="width: 200px; margin-left: 10px">
                             <input matInput formControlName="telNumber" placeholder="Telefone Fixo">
@@ -118,7 +111,7 @@
                 </div>
 
             </div>
-            <div style="float: right; margin-right: 150px">
+            <div class="action-form">
                 <button mat-raised-button color="primary">Registrar</button>
             </div>
 
