@@ -10,7 +10,7 @@ app-root{
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #303030;
+    background-color: #f5f5f5;
 }
 
 .overlay {
@@ -24,4 +24,8 @@ app-root{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #2c2e60;
 }

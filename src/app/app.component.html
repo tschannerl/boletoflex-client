@@ -1,3 +1,27 @@
+<mat-toolbar class="header">
+  <a mat-button routerLink=".">
+      <img class="logo" src="assets/img/boletoflex-logo.png">
+  </a>
+
+  <button class="menu" mat-button [matMenuTriggerFor]="menuSearch" *ngIf="isUserRole">Pesquisar</button>
+  <mat-menu  #menuSearch="matMenu">
+      <button class="submenu" mat-menu-item routerLink="/peopleFind">Cadastro de Pessoas</button>
+      <button class="submenu" mat-menu-item routerLink="/faceFind">Detectados e Reconhecidos</button>
+  </mat-menu>
 
 
-<router-outlet></router-outlet>
+  <button class="menu" mat-button routerLink="/deviceControl" *ngIf="isUserRole">Dispositivos</button>
+
+
+  <span class="fill-remaining-space"></span>
+
+  <button mat-icon-button aria-label="Logout" title="Logout" (click)="logout()">
+    <mat-icon class="icon-exit">exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="mainContent">
+  <router-outlet></router-outlet>
+  <mat-divider></mat-divider>
+</div>
+
