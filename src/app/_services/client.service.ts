@@ -9,7 +9,7 @@ import { retry, catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClientService {
-  const private authdata = window.btoa('admin' + ':' + 'Boletoflex!');
+  private authdata = window.btoa('admin' + ':' + 'Boletoflex!');
 
   constructor(private http: HttpClient) { }
 

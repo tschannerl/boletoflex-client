@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginService } from '../_services/login.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+
 
   // tslint:disable-next-line:max-line-length
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private toastr: ToastrService, private router: Router) { }
@@ -25,7 +26,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).pipe().subscribe(
       data => {
-        console.log(data);
         this.router.navigate(['/listClients']);
       },
       error => {

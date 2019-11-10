@@ -25,9 +25,11 @@
 
 .img-client{
     width: 350px;
-    height: 400px;
+    height: 430px;
     border: 1px solid grey;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .content{

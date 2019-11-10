@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Client } from '../_models/client';
 import { ClientService } from '../_services/client.service';
@@ -14,6 +14,12 @@ export class RegisterClientComponent implements OnInit {
   registerForm: FormGroup;
   imgClient: string;
   fileImgClient: File;
+
+  @ViewChild ('video', {static: false})
+  public video: ElementRef;
+
+  @ViewChild ('btnVideo', {static: false})
+  public btnVideo: ElementRef;
 
   constructor( private formBuilder: FormBuilder, private clientService: ClientService, private toastr: ToastrService) {}
 
@@ -40,12 +46,54 @@ export class RegisterClientComponent implements OnInit {
     });
   }
 
+  initCaptureVideo(event) {
+    console.log('Iniciando captura do video');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && event.srcElement.innerHTML === 'Tirar uma Foto') {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+          this.imgClient = null;
+          this.video.nativeElement.src = window.URL.createObjectURL(stream);
+          this.video.nativeElement.play();
+          event.srcElement.innerHTML = 'Capturar a Foto';
+        });
+    } else if (event.srcElement.innerHTML === 'Capturar a Foto') {
+      event.srcElement.innerHTML = 'Tirar uma Foto';
+      const canvas = document.createElement('canvas');
+      canvas.width = 640;
+      canvas.height = 480;
+      canvas.getContext('2d').drawImage(this.video.nativeElement, 0, 0, canvas.width, canvas.height);
+      this.imgClient = canvas.toDataURL();
+      this.fileImgClient = new File([this.dataURItoBlob(canvas.toDataURL())], 'imageClient', {type: 'image/jpg'});
+
+      this.video.nativeElement.pause();
+      this.video.nativeElement.src = null;
+      this.video.nativeElement.src = '';
+    }
+  }
+
+  dataURItoBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpg' });
+    return blob;
+  }
+
+
   handleFileInput(files: FileList) {
+    if (!this.video.nativeElement.paused) {
+      this.video.nativeElement.pause();
+      this.video.nativeElement.src = null;
+      this.video.nativeElement.src = '';
+    }
     this.fileImgClient = files.item(0);
     const reader: FileReader = new FileReader();
 
     reader.onloadend = (e) => {
-      this.imgClient = reader.result;
+      this.imgClient = reader.result.toString();
     };
 
     reader.readAsDataURL(this.fileImgClient);

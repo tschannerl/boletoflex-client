@@ -9,9 +9,17 @@
     <div class="register-main">
         <form [formGroup]="registerForm">
             <div class="register-content">
-                <div class="img-client" onclick="document.getElementById('imgClient').click()">
-                    <img class="img-client" [src]="imgClient" alt="">
-                    <input type="file" id="imgClient" formControlName="imgClient" style="display: none;" (change)="handleFileInput($event.target.files)">
+                <div class="img-client" >
+                    <div style="width: 350px; height: 380px;">
+                        <img style="width: 350px; height: 380px; object-fit: contain" [src]="imgClient" alt="">
+                        <video #video id="video" width="350" height="380" autoplay></video>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-around">
+                        <button mat-raised-button  type="button" onclick="document.getElementById('imgClient').click()" >Selecionar Foto</button>
+                        <button #btnVideo id="btnVideo" mat-raised-button type="button" (click)="initCaptureVideo($event)">Tirar uma Foto</button>
+                        <input type="file" id="imgClient" formControlName="imgClient" style="display: none;" (change)="handleFileInput($event.target.files)">
+                    </div> 
                 </div>
 
                 <div class="content">
