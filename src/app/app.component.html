@@ -2,17 +2,6 @@
   <a mat-button routerLink=".">
       <img class="logo" src="assets/img/boletoflex-logo.png">
   </a>
-
-  <button class="menu" mat-button [matMenuTriggerFor]="menuSearch" *ngIf="isUserRole">Pesquisar</button>
-  <mat-menu  #menuSearch="matMenu">
-      <button class="submenu" mat-menu-item routerLink="/peopleFind">Cadastro de Pessoas</button>
-      <button class="submenu" mat-menu-item routerLink="/faceFind">Detectados e Reconhecidos</button>
-  </mat-menu>
-
-
-  <button class="menu" mat-button routerLink="/deviceControl" *ngIf="isUserRole">Dispositivos</button>
-
-
   <span class="fill-remaining-space"></span>
 
   <button  mat-raised-button aria-label="Login" style="font-size: 15px" title="Login" routerLink="/login">LOGIN</button>
