@@ -9,8 +9,9 @@
     <div class="register-main">
         <form [formGroup]="registerForm">
             <div class="register-content">
-                <div class="img-client">
-
+                <div class="img-client" onclick="document.getElementById('imgClient').click()">
+                    <img class="img-client" [src]="imgClient" alt="">
+                    <input type="file" id="imgClient" formControlName="imgClient" style="display: none;" (change)="handleFileInput($event.target.files)">
                 </div>
 
                 <div class="content">
@@ -112,7 +113,7 @@
 
             </div>
             <div class="action-form">
-                <button mat-raised-button color="primary">Registrar</button>
+                <button mat-raised-button color="primary" (click)="add()" >Registrar</button>
             </div>
 
         </form>

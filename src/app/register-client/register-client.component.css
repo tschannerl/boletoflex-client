@@ -1,7 +1,7 @@
 .main{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     height: calc(100% - (70px));
     /*height: 100%;*/
@@ -26,7 +26,8 @@
 .img-client{
     width: 350px;
     height: 400px;
-    border: 1px solid grey
+    border: 1px solid grey;
+    cursor: pointer;
 }
 
 .content{
