@@ -31,11 +31,17 @@ Abrir o navegador (preverencialmente Chrome) e chamar: http://localhost:4200/hom
 # Uso do Sistema
 
 Tela principal foi criada utilizando algumas imagens e dados do site principal https://boletoflex.com/ (como cores, logos e imagens).
+
 No centro tem um botão que derá acesso ao cadastro do cliente.
+
 Na tela de cadastro pode-se, selecionar uma foto do computador ou mesmo tirar uma foto pela WebCam do cliente (clicar em Tirar Foto, abrirá o video, depois clicar no mesmo botão para capturar). Além do preenchimento dos dados principais do cliente.
+
 Alguns controles são feitos dos campos (requireds), se foi selecionado ou mesmo tirado uma foto, além de validar se o cliente já consta na base de dados pelo CPF/CNPJ.
+
 Ao registrar o cliente, este é enviado via REST JSON para o Server Spring Boot, além da imagem.
-Para acessar os dados cadastrados, deve-se clicar no topo direito "LOGIN", abrindo assim uma tela de login. (usuário: admin | senha: 123). Estes dados são confrontados na Base de Dados (é criado o usuário ao subir o Server).
+
+Para acessar os dados cadastrados, deve-se clicar no topo direito "LOGIN", abrindo assim uma tela de login. *(usuário: admin | senha: 123)*. Estes dados são confrontados na Base de Dados (é criado o usuário ao subir o Server).
+
 Na tela da lista dos clientes, abrirá uma tabela com os dados principais do cliente, porém é possivel clicar na linha e abrirá todos os detalhes gravados deste cliente.
 
 
