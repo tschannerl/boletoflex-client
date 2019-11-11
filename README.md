@@ -42,7 +42,7 @@ Ao registrar o cliente, este é enviado via REST JSON para o Server Spring Boot,
 
 Para acessar os dados cadastrados, deve-se clicar no topo direito "LOGIN", abrindo assim uma tela de login. *(usuário: admin | senha: 123)*. Estes dados são confrontados na Base de Dados (é criado o usuário ao subir o Server).
 
-Na tela da lista dos clientes, abrirá uma tabela com os dados principais do cliente, porém é possivel clicar na linha e abrirá todos os detalhes gravados deste cliente.
+Na tela da lista dos clientes, abrirá uma tabela com os dados principais do cliente, é possivel clicar na linha e abrirá todos os detalhes gravados deste cliente. Além disso é possível aplicar a ação de aprovar ou não o cliente, gravando no Server o status do cliente;
 
 
 
