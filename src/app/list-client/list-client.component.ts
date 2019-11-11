@@ -3,6 +3,7 @@ import { Client } from '../_models/client';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClientService } from '../_services/client.service';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-client',
@@ -24,7 +25,7 @@ export class ListClientComponent implements OnInit {
   labelToDisplay = {name: 'Nome', document: 'CPF/CNPJ', identify: 'Identidade', email: 'Email'};
   expandedElement: Client | null;
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.listAllClients();
@@ -37,6 +38,26 @@ export class ListClientComponent implements OnInit {
       data => {
         this.clients = data;
         console.log(data);
+      },
+      error => {
+        console.log('error : ' + error);
+      });
+  }
+
+  approved(id: number) {
+    this.clientService.approved(id.toString(), 'true').pipe().subscribe(
+      data => {
+        this.toastr.success('Cliente aprovado', 'Aprovado');
+      },
+      error => {
+        console.log('error : ' + error);
+      });
+  }
+
+  notapproved(id: number) {
+    this.clientService.approved(id.toString(), 'false').pipe().subscribe(
+      data => {
+        this.toastr.warning('Cliente não aprovado', 'Não Aprovado');
       },
       error => {
         console.log('error : ' + error);

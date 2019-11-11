@@ -36,8 +36,12 @@
             <div style="margin-bottom: 15px"><span class="element-description-attribution">Cidade: </span>{{element.city}}</div>
             <div style="margin-bottom: 15px"><span class="element-description-attribution">Estado: </span>{{element.state}}</div>
             <div style="margin-bottom: 15px"><span class="element-description-attribution">Celular: </span>{{element.celNumber}}</div>
-            <div style="margin-bottom: 15px"><span class="element-description-attribution">Telefone: </span>{{element.telNumber==null?'':element.telNumber}}</div>
-            <div style="margin-bottom: 15px"><span class="element-description-attribution">Tel. Comericial: </span>{{element.comNumber==null?'':element.comNumber}}</div>
+            <div style="margin-bottom: 15px"><span class="element-description-attribution">Telefone: </span>{{element.telNumber==='null'?'':element.telNumber}}</div>
+            <div style="margin-bottom: 15px"><span class="element-description-attribution">Tel. Comericial: </span>{{element.comNumber==='null'?'':element.comNumber}}</div>
+            <div>
+              <button mat-raised-button  type="button" color="primary" (click)="approved(element.id)"  >Cliente aprovado</button>
+              <button mat-raised-button style="margin-left: 10px"  type="button" color="accent" (click)="notapproved(element.id)" >Cliente não aprovado</button>
+          </div>
           </div>        
         </div>
       </td>

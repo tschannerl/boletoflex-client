@@ -13,6 +13,7 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
+  // tslint:disable-next-line:ban-types
   add( client: Client): Observable<Object> {
     const params = new FormData();
 
@@ -41,6 +42,7 @@ export class ClientService {
       'X-Requested-With': 'XMLHttpRequest', authorization : 'Basic ' + this.authdata
     });
 
+    // tslint:disable-next-line:object-literal-shorthand
     return this.http.post(`${environment.serverUrl}/client/`, params, {headers: headers}).pipe(
       catchError(this.handleError)
     );
@@ -52,8 +54,26 @@ export class ClientService {
     });
 
 
+    // tslint:disable-next-line:object-literal-shorthand
     return this.http.get<any>(`${environment.serverUrl}/client`, {headers: headers}).pipe(
       retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  approved(id: string, approved: string) {
+    const params = new FormData();
+    params.append('id', id);
+    params.append('approved', approved);
+
+    console.log(params);
+
+    const headers = new HttpHeaders({
+      'X-Requested-With': 'XMLHttpRequest', authorization : 'Basic ' + this.authdata
+    });
+
+    // tslint:disable-next-line:object-literal-shorthand
+    return this.http.post(`${environment.serverUrl}/client/approved`, params, {headers: headers}).pipe(
       catchError(this.handleError)
     );
   }
