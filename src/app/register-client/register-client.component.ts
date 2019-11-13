@@ -14,6 +14,7 @@ export class RegisterClientComponent implements OnInit {
   registerForm: FormGroup;
   imgClient: string;
   fileImgClient: File;
+  streamVideo: any;
 
   @ViewChild ('video', {static: false})
   public video: ElementRef;
@@ -51,8 +52,13 @@ export class RegisterClientComponent implements OnInit {
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && event.srcElement.innerHTML === 'Tirar uma Foto') {
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+          this.streamVideo = stream;
           this.imgClient = null;
-          this.video.nativeElement.src = window.URL.createObjectURL(stream);
+          try {
+            this.video.nativeElement.srcObject = stream;
+          } catch (error) {
+            this.video.nativeElement.src = window.URL.createObjectURL(stream);
+          }
           this.video.nativeElement.play();
           event.srcElement.innerHTML = 'Capturar a Foto';
         });
@@ -65,9 +71,10 @@ export class RegisterClientComponent implements OnInit {
       this.imgClient = canvas.toDataURL();
       this.fileImgClient = new File([this.dataURItoBlob(canvas.toDataURL())], 'imageClient', {type: 'image/jpg'});
 
-      this.video.nativeElement.pause();
+      this.video.nativeElement.srcObject = null;
       this.video.nativeElement.src = null;
-      this.video.nativeElement.src = '';
+      this.video.nativeElement.pause();
+      if (this.streamVideo.getTracks().length > 0) {this.streamVideo.getTracks()[0].stop(); }
     }
   }
 
